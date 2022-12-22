@@ -48,9 +48,9 @@ impl Players {
     }
     pub fn next_player(&self, current_player: Player) -> Player {
         if self.player_one.name == current_player.name {
-            return self.player_two.clone();
+            self.player_two.clone()
         } else {
-            return self.player_one.clone();
+            self.player_one.clone()
         }
     }
 }
@@ -167,7 +167,7 @@ fn main() {
     for _ in 1..=9 {
         board.print_board();
         current_player = Players::next_player(&players, current_player);
-        let input = capture_input(board.board.clone());
+        let input = capture_input(board.board);
         board.replace(input, current_player.symbol);
         if board.has_winner() {
             end_game = EndGame::Win;
